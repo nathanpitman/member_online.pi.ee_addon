@@ -17,13 +17,15 @@ class member_online {
 	function member_online()
 	{
 		global $TMPL, $DB;
+		$this->EE =& get_instance();
+		$TMPL = $this->EE->TMPL; 
 
 		// Get username from template
 		$username = $TMPL->fetch_param('username');
 		$return = $TMPL->fetch_param('return');
         
 		if ($return != "") {
-        	$returnParts = split(',',$return);
+        	$returnParts = preg_split('/,/',$return);
         	$return_true = $returnParts[0];
         	$return_false = $returnParts[1];
         } else {
@@ -33,9 +35,9 @@ class member_online {
 		
 		// If username is set
 		if ($username != "") {
-			$sql = "SELECT exp_members.* FROM exp_online_users, exp_members WHERE (exp_members.username='".$DB->escape_str($username)."' AND exp_online_users.member_id=exp_members.member_id)";
-			$DB->fetch_fields = TRUE;
-			$query = $DB->query($sql);
+			$sql = "SELECT exp_members.* FROM exp_online_users, exp_members WHERE (exp_members.username='".$this->EE->db->escape_str($username)."' AND exp_online_users.member_id=exp_members.member_id)";
+			$this->EE->db->fetch_fields = TRUE;
+			$query = $this->EE->db->query($sql);
 			
 			// If the username exist in the exp_members table and the corresponding member_id exists in the emp_online_users table
 			if ($query->num_rows == 1) {
