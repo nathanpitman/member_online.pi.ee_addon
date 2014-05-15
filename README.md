@@ -5,7 +5,9 @@ Return the online status of any member based on username. Useful if you want to 
 
 BASIC USAGE:
 
+```
 {exp:member_online username='randolfturpin' return="Online,Offline"}
+```
 
 PARAMETERS:
 
@@ -17,8 +19,8 @@ return = 'Online,Offline' (default - 'true,false')
 	
 RELEASE NOTES:
 
-1.2 - Re-branded as a 'Nine Four' plug-in.
-1.1 - Revised SQL Query, combining two DB lookups into one - thanks to Drew (McLellan) for the suggestion.
-1.0 - Initial Release.
+1.2. - Re-branded as a 'Nine Four' plug-in.
+1.1. - Revised SQL Query, combining two DB lookups into one - thanks to Drew (McLellan) for the suggestion.
+1.0. - Initial Release.
 
 For updates and support check the developers website: http://ninefour.co.uk/labs
