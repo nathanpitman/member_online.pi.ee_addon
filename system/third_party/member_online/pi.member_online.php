@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name'			=> 'Member Online?',
-	'pi_version'		=> '1.2',
+	'pi_version'		=> '1.2.1',
 	'pi_author'			=> 'Nine Four',
 	'pi_author_url'		=> 'http://ninefour.co.uk/labs',
 	'pi_description'	=> 'Return the online status of any member based on username',
@@ -35,7 +35,7 @@ class member_online {
 		
 		// If username is set
 		if ($username != "") {
-			$sql = "SELECT exp_members.* FROM exp_online_users, exp_members WHERE (exp_members.username='".$this->EE->db->escape_str($username)."' AND exp_online_users.member_id=exp_members.member_id)";
+			$sql = "SELECT DISTINCT exp_members.* FROM exp_online_users, exp_members WHERE (exp_members.username='".$this->EE->db->escape_str($username)."' AND exp_members.member_id != '0' AND exp_online_users.member_id=exp_members.member_id)";
 			$this->EE->db->fetch_fields = TRUE;
 			$query = $this->EE->db->query($sql);
 			
